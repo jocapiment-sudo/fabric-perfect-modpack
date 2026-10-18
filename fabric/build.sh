@@ -7,7 +7,7 @@
 #
 #  What it does:
 #    1. verifies a Java 17+ JDK is available,
-#    2. uses Gradle from PATH, or downloads a local Gradle 8.5 if missing,
+#    2. uses Gradle from PATH, or downloads a local Gradle 8.8 if missing,
 #    3. runs the Fabric Loom build (downloads Minecraft + Yarn + Fabric API),
 #    4. copies the finished jar into ./dist.
 #
@@ -18,7 +18,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-GRADLE_VERSION="8.5"
+GRADLE_VERSION="8.8"
 DIST_DIR="dist"
 JAR_NAME="apotheosis-fabric-1.20.1.jar"
 GRADLE_HOME=".gradle-dist"

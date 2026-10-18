@@ -12,7 +12,7 @@
 $ErrorActionPreference = 'Stop'
 Set-Location -Path $PSScriptRoot
 
-$GradleVersion = '8.5'
+$GradleVersion = '8.8'
 $JarName       = 'apotheosis-fabric-1.20.1.jar'
 $DistDir       = 'dist'
 $GradleHome    = '.gradle-dist'
