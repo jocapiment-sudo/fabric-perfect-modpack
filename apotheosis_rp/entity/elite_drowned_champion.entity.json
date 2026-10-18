@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "apotheosis:elite_drowned_champion",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zombie/drowned"
+      },
+      "geometry": {
+        "default": "geometry.zombie"
+      },
+      "animations": {
+        "walk": "animation.apotheosis.humanoid.walk",
+        "idle": "animation.apotheosis.humanoid.idle"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "query.modified_move_speed > 0.05"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.apotheosis_elite"
+      ],
+      "enable_attachables": true,
+      "spawn_egg": {
+        "base_color": "#2f5a57",
+        "overlay_color": "#7affc9"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "apotheosis:affix_spawner"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:mob_spawner"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      }
+    ],
+    "result": {
+      "item": "apotheosis:affix_spawner",
+      "count": 1
+    }
+  }
+}

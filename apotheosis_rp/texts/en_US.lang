@@ -1,0 +1,20 @@
+## Apotheosis: Bedrock Edition
+tile.apotheosis:reforging_altar.name=Reforging Altar
+tile.apotheosis:affix_spawner.name=Apotheosis Spawner
+item.apotheosis:reforging_hammer.name=Reforging Hammer
+item.apotheosis:spawner_tuning_fork.name=Spawner Tuning Fork
+item.apotheosis:codex_of_affixes.name=Codex of Affixes
+item.apotheosis:arcane_dust.name=Arcane Dust
+item.apotheosis:affix_gem.name=Affix Gem
+item.apotheosis:affix_effigy.name=Affix Effigy
+item.apotheosis:orb_uncommon.name=Uncommon Orb
+item.apotheosis:orb_rare.name=Rare Orb
+item.apotheosis:orb_epic.name=Epic Orb
+item.apotheosis:orb_mythic.name=Mythic Orb
+item.apotheosis:boss_blade.name=Bloodforged Blade
+item.apotheosis:boss_cleaver.name=Dread Cleaver
+entity.apotheosis:elite_zombie_brute.name=Affix Brute
+entity.apotheosis:elite_husk_juggernaut.name=Affix Juggernaut
+entity.apotheosis:elite_skeleton_ranger.name=Affix Ranger
+entity.apotheosis:elite_stray_sorcerer.name=Affix Sorcerer
+entity.apotheosis:elite_drowned_champion.name=Affix Champion

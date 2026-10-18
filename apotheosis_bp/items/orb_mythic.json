@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "apotheosis:orb_mythic",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "apoth_orb_mythic"
+      },
+      "minecraft:display_name": {
+        "value": "Mythic Orb"
+      },
+      "minecraft:max_stack_size": 16
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "apotheosis:affix_effigy"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:amethyst_block"
+      },
+      {
+        "item": "minecraft:bone_block"
+      },
+      {
+        "item": "apotheosis:affix_gem"
+      },
+      {
+        "item": "minecraft:gold_ingot"
+      },
+      {
+        "item": "minecraft:gold_ingot"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      }
+    ],
+    "result": {
+      "item": "apotheosis:affix_effigy",
+      "count": 1
+    }
+  }
+}

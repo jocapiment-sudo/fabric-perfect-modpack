@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "apotheosis:boss_cleaver",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "apoth_boss_cleaver"
+      },
+      "minecraft:display_name": {
+        "value": "Dread Cleaver"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:durability": {
+        "max_durability": 1561
+      },
+      "minecraft:damage": {
+        "value": 11
+      },
+      "minecraft:enchantable": {
+        "slot": "axe",
+        "value": 15
+      }
+    }
+  }
+}

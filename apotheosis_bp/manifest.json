@@ -1,0 +1,64 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Apotheosis — Affixes & Elites",
+    "description": "Rarity, affixes, affix bosses, scripted spawners and a reforging altar. Bedrock 1.20.80+ · @minecraft/server 1.10.0.",
+    "uuid": "515979af-2fcd-4ef0-8214-1cfbc84452dc",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      80
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "56db79d5-a28d-4df0-bce3-9d91dacd2bcb",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "7e3d8910-2374-45ee-afac-e764cb601379",
+      "version": [
+        1,
+        0,
+        0
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "3c6575b8-522e-43be-85c0-98b99cbca564",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.10.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "1.1.0"
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "Apotheosis Bedrock contributors"
+    ],
+    "license": "MIT"
+  }
+}
