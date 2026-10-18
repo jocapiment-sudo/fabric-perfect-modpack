@@ -64,8 +64,9 @@ salvage it back into Arcane Dust.
 
 ## Quick start
 
-1. Install the add-on — see **[docs/INSTALL.md](docs/INSTALL.md)** (`.mcaddon` import, or
-   manual folder copy for a server).
+1. Install the add-on — grab **[`release/Apotheosis.mcaddon`](release/Apotheosis.mcaddon)** and
+   open it with Minecraft, or follow **[docs/INSTALL.md](docs/INSTALL.md)** for the manual /
+   dedicated-server route.
 2. Enable the pack on your world. Scripting is on by default; you do **not** need
    "Beta APIs" unless you re-point the manifest at a beta module version.
 3. Run `/scriptevent apoth:give kit` with cheats enabled to get a hammer, a fork, the codex,

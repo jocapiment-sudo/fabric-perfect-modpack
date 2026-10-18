@@ -24,6 +24,13 @@ import { join, relative, sep } from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname.replace(/\/$/, '');
 const DIST = join(ROOT, 'dist');
+/**
+ * `dist/` is disposable build output (git-ignored), while `release/` holds the
+ * single file players actually need. Keeping the .mcaddon in the repository
+ * means someone on a phone or a console can install the add-on without a
+ * Node toolchain; the two .mcpack files stay in `dist/` for debugging.
+ */
+const RELEASE = join(ROOT, 'release');
 
 /* -------------------------------------------------------------------------- */
 /* Minimal zip writer                                                         */
@@ -163,6 +170,7 @@ if (!existsSync(join(ROOT, 'apotheosis_bp', 'scripts', 'main.js'))) {
 }
 
 mkdirSync(DIST, { recursive: true });
+mkdirSync(RELEASE, { recursive: true });
 
 const bpFiles = audit(join(ROOT, 'apotheosis_bp'), 'apotheosis_bp');
 const rpFiles = audit(join(ROOT, 'apotheosis_rp'), 'apotheosis_rp');
@@ -179,10 +187,12 @@ const addonZip = createZip([
   ...rpFiles.map((file) => ({ name: `Apotheosis_RP/${file.name}`, data: file.data })),
 ]);
 writeFileSync(join(DIST, 'Apotheosis.mcaddon'), addonZip);
+writeFileSync(join(RELEASE, 'Apotheosis.mcaddon'), addonZip);
 
 const kb = (buffer) => `${(buffer.length / 1024).toFixed(0)} KB`;
 console.log('\nPackaged:');
 console.log(`  · dist/Apotheosis_BP.mcpack   ${kb(bpZip)}  (${bpFiles.length} files)`);
 console.log(`  · dist/Apotheosis_RP.mcpack   ${kb(rpZip)}  (${rpFiles.length} files)`);
-console.log(`  · dist/Apotheosis.mcaddon     ${kb(addonZip)}  (both packs, recommended)`);
+console.log(`  · dist/Apotheosis.mcaddon     ${kb(addonZip)}  (both packs)`);
+console.log(`  · release/Apotheosis.mcaddon  ${kb(addonZip)}  (install this one)`);
 console.log('');
