@@ -2,11 +2,15 @@ name: Fabric build
 
 on:
   push:
+    # Explicit source paths: GitHub rejects combining `paths` with `paths-ignore`,
+    # and this list also keeps the bot's jar commit from re-triggering a build.
     paths:
-      - 'fabric/**'
+      - 'fabric/src/**'
+      - 'fabric/*.gradle'
+      - 'fabric/gradle.properties'
+      - 'fabric/build.sh'
+      - 'fabric/build.ps1'
       - '.github/workflows/fabric-build.yml'
-    paths-ignore:
-      - 'fabric/dist/**'
   workflow_dispatch:
 
 permissions:
