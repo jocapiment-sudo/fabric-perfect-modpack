@@ -92,7 +92,7 @@ public final class EliteManager {
         }
 
         boolean aura = consumeAura(world, mob.getBlockPos());
-        Random random = world.getRandom();
+        Random random = new Random(world.getRandom().nextLong());
         if (!aura) {
             if (!ApotheosisConfig.naturalElites) {
                 return;
@@ -176,7 +176,7 @@ public final class EliteManager {
         if (world.isClient()) {
             return;
         }
-        Random random = world.getRandom();
+        Random random = new Random(world.getRandom().nextLong());
 
         boolean hasKiller = source.getAttacker() instanceof ServerPlayerEntity;
         if (ApotheosisConfig.guaranteedEliteDrops || hasKiller) {

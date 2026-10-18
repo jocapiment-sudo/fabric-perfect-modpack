@@ -88,7 +88,7 @@ public final class ReforgingService {
             return false;
         }
 
-        Random random = player.getRandom();
+        Random random = new Random(player.getRandom().nextLong());
         AffixData data = existing != null ? existing : new AffixData();
         if (existing == null) {
             data.rarity = Rarity.roll(random);
@@ -134,9 +134,10 @@ public final class ReforgingService {
         }
 
         data.rarity = next;
+        Random random = new Random(player.getRandom().nextLong());
         while (data.affixes.size() < next.affixCount()) {
             RolledAffix rolled = Affixes.rollOne(next, ItemFactory.kindOf(target), data.level,
-                    player.getRandom(), Affixes.idsOf(data.affixes));
+                    random, Affixes.idsOf(data.affixes));
             if (rolled == null) {
                 break;
             }
