@@ -2,7 +2,8 @@
 node_modules/
 
 # Build artifacts (reproducible with `npm run package`)
-dist/
+# Scoped to the repository root so fabric/dist/ stays trackable.
+/dist/
 *.tsbuildinfo
 
 # Generated at build time, but committed because the pack needs it:
@@ -17,3 +18,10 @@ Thumbs.db
 # Python
 __pycache__/
 *.pyc
+
+# Fabric build outputs (the published jar lives in fabric/dist/)
+fabric/build/
+fabric/.gradle/
+fabric/.gradle-dist/
+fabric/run/
+fabric/fabric-build.log

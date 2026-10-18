@@ -1,3 +1,17 @@
+# Apotheosis — Bedrock add-on and Fabric port
+
+This repository holds two independent implementations of the same design:
+
+| Port | Target | Location | Artefact |
+| --- | --- | --- | --- |
+| **Bedrock add-on** | Minecraft Bedrock 1.20.80+ (Script API, BP + RP) | repository root | [`release/Apotheosis.mcaddon`](release/Apotheosis.mcaddon) |
+| **Fabric mod** | Minecraft Java 1.20.1, Fabric Loader 0.14.22+, Java 17 | [`fabric/`](fabric) | [`release/apotheosis-fabric-1.20.1.jar`](release/apotheosis-fabric-1.20.1.jar) |
+
+The Fabric port has its own [README](fabric/README.md) covering build, install
+and design notes. Everything below documents the Bedrock add-on.
+
+---
+
 # Apotheosis — Bedrock Edition
 
 An add-on for **Minecraft: Bedrock Edition 1.20.80+** that rebuilds the core of the Java
