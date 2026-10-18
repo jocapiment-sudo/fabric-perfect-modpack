@@ -55,7 +55,11 @@ public final class CombatEvents {
 
             if (stats.critChance > 0.0 && player.getRandom().nextDouble() < stats.critChance) {
                 float bonus = (float) Math.max(1.0, amount * (0.5 + stats.critDamage));
-                defer(world, () -> entity.damage(world.getDamageSources().playerAttack(player), bonus));
+                defer(world, () -> {
+                    if (!entity.isRemoved()) {
+                        entity.damage(world.getDamageSources().playerAttack(player), bonus);
+                    }
+                });
             }
             if (stats.lifesteal > 0.0) {
                 player.heal((float) (amount * stats.lifesteal));
@@ -75,7 +79,11 @@ public final class CombatEvents {
             ItemStats stats = ItemStats.of(victim);
             if (stats.thorns > 0.0) {
                 float reflected = (float) Math.max(1.0, amount * stats.thorns);
-                defer(world, () -> livingAttacker.damage(world.getDamageSources().thorns(victim), reflected));
+                defer(world, () -> {
+                    if (!livingAttacker.isRemoved()) {
+                        livingAttacker.damage(world.getDamageSources().thorns(victim), reflected);
+                    }
+                });
             }
         }
         return true;

@@ -47,6 +47,15 @@ import net.minecraft.world.World;
 public final class EliteManager {
 
     public static final String TAG = "apotheosis_elite";
+
+    /**
+     * Set on every mob that has already been evaluated, promoted or not.
+     *
+     * <p>Without this, {@code ENTITY_LOAD} fires again whenever a chunk is
+     * reloaded and every zombie would eventually be promoted by repeated 4 %
+     * rolls.</p>
+     */
+    private static final String CHECKED_TAG = "apotheosis_checked";
     private static final UUID HEALTH_MODIFIER = UUID.fromString("0a1b2c3d-0005-4a1b-9c3d-000000000005");
 
     /** 27.7 hours: long enough to read as permanent, short enough to expire cleanly. */
@@ -87,9 +96,11 @@ public final class EliteManager {
         if (!(entity instanceof MobEntity mob) || !ELIGIBLE.contains(mob.getType())) {
             return;
         }
-        if (mob.getCommandTags().contains(TAG) || mob.isBaby()) {
+        if (mob.getCommandTags().contains(TAG) || mob.getCommandTags().contains(CHECKED_TAG) || mob.isBaby()) {
             return;
         }
+        // One roll per mob lifetime, persisted with the entity.
+        mob.addCommandTag(CHECKED_TAG);
 
         boolean aura = consumeAura(world, mob.getBlockPos());
         Random random = new Random(world.getRandom().nextLong());

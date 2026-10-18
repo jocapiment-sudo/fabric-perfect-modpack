@@ -1,6 +1,7 @@
 package dev.apotheosis;
 
 import dev.apotheosis.command.ApotheosisCommand;
+import dev.apotheosis.core.Affixes;
 import dev.apotheosis.registry.ModBlocks;
 import dev.apotheosis.registry.ModItems;
 import dev.apotheosis.system.CombatEvents;
@@ -55,6 +56,6 @@ public class ApotheosisMod implements ModInitializer {
         SpawnerTuning.register();
         ApotheosisCommand.register();
 
-        LOGGER.info("Apotheosis initialised: 5 rarities, {} affixes, 0 mixins", 13);
+        LOGGER.info("Apotheosis initialised: 5 rarities, {} affixes, 0 mixins", Affixes.ALL.size());
     }
 }
