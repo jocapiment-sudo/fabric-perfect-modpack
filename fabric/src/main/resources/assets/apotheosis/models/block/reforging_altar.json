@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "apotheosis:block/altar_top",
+    "bottom": "apotheosis:block/altar_side",
+    "side": "apotheosis:block/altar_side"
+  }
+}

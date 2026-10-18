@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "apotheosis",
+  "version": "${version}",
+  "name": "Apotheosis: Fabric Edition",
+  "description": "Rarity tiers, randomised affixes, elite affix bosses, tunable mob spawners and a reforging altar — a Fabric recreation of the core Apotheosis loop for Minecraft 1.20.1.",
+  "authors": [
+    "Apotheosis Fabric contributors"
+  ],
+  "contact": {
+    "homepage": "https://github.com/jocapiment-sudo/fabric-perfect-modpack",
+    "sources": "https://github.com/jocapiment-sudo/fabric-perfect-modpack"
+  },
+  "license": "MIT",
+  "icon": "assets/apotheosis/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.apotheosis.ApotheosisMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  }
+}

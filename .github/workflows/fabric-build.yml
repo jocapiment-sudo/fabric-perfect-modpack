@@ -1,0 +1,45 @@
+name: Fabric build
+
+on:
+  push:
+    paths:
+      - 'fabric/**'
+      - '.github/workflows/fabric-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build apotheosis-fabric-1.20.1.jar
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fabric
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.5'
+
+      - name: Build
+        run: gradle build --no-daemon --stacktrace
+
+      - name: Show artifacts
+        run: ls -l build/libs
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: apotheosis-fabric-jar
+          path: |
+            fabric/build/libs/*.jar
+            fabric/dist/*.jar
+          if-no-files-found: error
