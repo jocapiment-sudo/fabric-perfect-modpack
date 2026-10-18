@@ -5,7 +5,12 @@ on:
     paths:
       - 'fabric/**'
       - '.github/workflows/fabric-build.yml'
+    paths-ignore:
+      - 'fabric/dist/**'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -30,12 +35,31 @@ jobs:
           gradle-version: '8.5'
 
       - name: Build
-        run: gradle build --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          gradle build --no-daemon --console=plain 2>&1 | tee build.log
 
-      - name: Show artifacts
-        run: ls -l build/libs
+      - name: Annotate compile errors
+        if: failure()
+        run: |
+          echo "---- build.log tail ----"
+          tail -n 120 build.log || true
+          grep -nE "error:|\.java:[0-9]+:|> Task .*FAILED|Could not resolve|FAILURE:" build.log \
+            | head -n 45 \
+            | while IFS= read -r line; do
+                echo "::error title=Build::$line"
+              done
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: fabric/build.log
+          if-no-files-found: ignore
 
       - name: Upload jar
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: apotheosis-fabric-jar
@@ -43,3 +67,21 @@ jobs:
             fabric/build/libs/*.jar
             fabric/dist/*.jar
           if-no-files-found: error
+
+      # Artifact downloads are not reachable from every environment, so the
+      # built jar is also committed to the branch. `paths-ignore` above stops
+      # this commit from triggering another build.
+      - name: Publish jar into the repository
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p dist
+          cp build/libs/apotheosis-fabric-1.20.1.jar dist/apotheosis-fabric-1.20.1.jar
+          git add -f dist/apotheosis-fabric-1.20.1.jar
+          if git diff --cached --quiet; then
+            echo "jar unchanged"
+          else
+            git commit -m "chore: publish built jar [skip ci]"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi

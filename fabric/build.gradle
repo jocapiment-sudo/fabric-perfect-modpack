@@ -40,6 +40,8 @@ processResources {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.release = 17
+    // Report every error in one pass instead of stopping at 100.
+    options.compilerArgs += ['-Xmaxerrs', '1000']
 }
 
 java {
