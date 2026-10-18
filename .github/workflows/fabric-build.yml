@@ -62,6 +62,19 @@ jobs:
           path: fabric/build.log
           if-no-files-found: ignore
 
+      # Artifact storage is not reachable from every environment, so on failure
+      # the log is committed to the branch as well. It is outside the `paths`
+      # trigger list, so this cannot start a build loop.
+      - name: Commit build log on failure
+        if: failure()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp build.log fabric-build.log || true
+          git add -f fabric-build.log || true
+          git commit -m "ci: build log for ${GITHUB_SHA::7} [skip ci]" || true
+          git push origin HEAD:${GITHUB_REF_NAME} || true
+
       - name: Upload jar
         if: success()
         uses: actions/upload-artifact@v4
