@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build artifacts (reproducible with `npm run package`)
+# Scoped to the repository root so fabric/dist/ stays trackable.
+/dist/
+*.tsbuildinfo
+
+# Generated at build time, but committed because the pack needs it:
+# apotheosis_bp/scripts/main.js
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# Fabric build outputs (the published jar lives in fabric/dist/)
+fabric/build/
+fabric/.gradle/
+fabric/.gradle-dist/
+fabric/run/
+fabric/fabric-build.log

@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "apotheosis:elite_zombie_brute",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/zombie/zombie"
+      },
+      "geometry": {
+        "default": "geometry.zombie"
+      },
+      "animations": {
+        "walk": "animation.apotheosis.humanoid.walk",
+        "idle": "animation.apotheosis.humanoid.idle"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "query.modified_move_speed > 0.05"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.apotheosis_elite"
+      ],
+      "enable_attachables": true,
+      "spawn_egg": {
+        "base_color": "#3f5f2f",
+        "overlay_color": "#b8ff7a"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "apotheosis-bedrock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apotheosis-inspired affix, elite mob and spawner add-on for Minecraft Bedrock Edition",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "validate": "node tools/validate.mjs",
+    "docs:affixes": "node tools/gen_affix_docs.mjs",
+    "textures": "python3 tools/generate_textures.py",
+    "package": "npm run build && node tools/package.mjs",
+    "ci": "npm run typecheck && npm run build && npm run validate"
+  },
+  "devDependencies": {
+    "@minecraft/server": "1.10.0",
+    "@minecraft/server-ui": "1.1.0",
+    "esbuild": "0.20.2",
+    "typescript": "5.4.5"
+  }
+}

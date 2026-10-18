@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "apotheosis:elite_skeleton_ranger",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/skeleton/skeleton"
+      },
+      "geometry": {
+        "default": "geometry.skeleton"
+      },
+      "animations": {
+        "walk": "animation.apotheosis.humanoid.walk",
+        "idle": "animation.apotheosis.humanoid.idle"
+      },
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "walk": "query.modified_move_speed > 0.05"
+          }
+        ]
+      },
+      "render_controllers": [
+        "controller.render.apotheosis_elite"
+      ],
+      "enable_attachables": true,
+      "spawn_egg": {
+        "base_color": "#9a9a9a",
+        "overlay_color": "#f2f2f2"
+      }
+    }
+  }
+}

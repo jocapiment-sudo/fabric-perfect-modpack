@@ -1,0 +1,35 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Apotheosis — Resources",
+    "description": "Textures, models and UI assets for the Apotheosis behaviour pack.",
+    "uuid": "3c6575b8-522e-43be-85c0-98b99cbca564",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      80
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "54f1f214-87f0-4a35-8339-a4f4e0447b27",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "Apotheosis Bedrock contributors"
+    ],
+    "license": "MIT"
+  }
+}

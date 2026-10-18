@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "apotheosis:boss_blade",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "apoth_boss_blade"
+      },
+      "minecraft:display_name": {
+        "value": "Bloodforged Blade"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:durability": {
+        "max_durability": 1561
+      },
+      "minecraft:damage": {
+        "value": 9
+      },
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 18
+      }
+    }
+  }
+}

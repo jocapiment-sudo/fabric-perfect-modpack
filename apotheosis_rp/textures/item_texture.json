@@ -1,0 +1,42 @@
+{
+  "resource_pack_name": "apotheosis",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "apoth_reforge_hammer": {
+      "textures": "textures/items/apoth_reforge_hammer"
+    },
+    "apoth_spawner_tuning_fork": {
+      "textures": "textures/items/apoth_spawner_tuning_fork"
+    },
+    "apoth_codex": {
+      "textures": "textures/items/apoth_codex"
+    },
+    "apoth_arcane_dust": {
+      "textures": "textures/items/apoth_arcane_dust"
+    },
+    "apoth_affix_gem": {
+      "textures": "textures/items/apoth_affix_gem"
+    },
+    "apoth_effigy": {
+      "textures": "textures/items/apoth_effigy"
+    },
+    "apoth_orb_uncommon": {
+      "textures": "textures/items/apoth_orb_uncommon"
+    },
+    "apoth_orb_rare": {
+      "textures": "textures/items/apoth_orb_rare"
+    },
+    "apoth_orb_epic": {
+      "textures": "textures/items/apoth_orb_epic"
+    },
+    "apoth_orb_mythic": {
+      "textures": "textures/items/apoth_orb_mythic"
+    },
+    "apoth_boss_blade": {
+      "textures": "textures/items/apoth_boss_blade"
+    },
+    "apoth_boss_cleaver": {
+      "textures": "textures/items/apoth_boss_cleaver"
+    }
+  }
+}

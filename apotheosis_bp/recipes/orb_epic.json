@@ -1,0 +1,41 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "apotheosis:orb_epic"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "apotheosis:arcane_dust"
+      },
+      {
+        "item": "minecraft:netherite_scrap"
+      },
+      {
+        "item": "apotheosis:orb_rare"
+      }
+    ],
+    "result": {
+      "item": "apotheosis:orb_epic",
+      "count": 1
+    }
+  }
+}

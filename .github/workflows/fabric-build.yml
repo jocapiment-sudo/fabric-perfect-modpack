@@ -1,0 +1,104 @@
+name: Fabric build
+
+on:
+  push:
+    # Explicit source paths: GitHub rejects combining `paths` with `paths-ignore`,
+    # and this list also keeps the bot's jar commit from re-triggering a build.
+    paths:
+      - 'fabric/src/**'
+      - 'fabric/*.gradle'
+      - 'fabric/gradle.properties'
+      - 'fabric/build.sh'
+      - 'fabric/build.ps1'
+      - '.github/workflows/fabric-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build apotheosis-fabric-1.20.1.jar
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fabric
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.8'
+
+      - name: Build
+        run: |
+          set -o pipefail
+          gradle build --no-daemon --console=plain 2>&1 | tee build.log
+
+      - name: Annotate compile errors
+        if: failure()
+        run: |
+          echo "---- build.log tail ----"
+          tail -n 120 build.log || true
+          grep -nE "error:|\.java:[0-9]+:|> Task .*FAILED|Could not resolve|FAILURE:" build.log \
+            | head -n 45 \
+            | while IFS= read -r line; do
+                echo "::error title=Build::$line"
+              done
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: fabric/build.log
+          if-no-files-found: ignore
+
+      # Artifact storage is not reachable from every environment, so on failure
+      # the log is committed to the branch as well. It is outside the `paths`
+      # trigger list, so this cannot start a build loop.
+      - name: Commit build log on failure
+        if: failure()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp build.log fabric-build.log || true
+          git add -f fabric-build.log || true
+          git commit -m "ci: build log for ${GITHUB_SHA::7} [skip ci]" || true
+          git push origin HEAD:${GITHUB_REF_NAME} || true
+
+      - name: Upload jar
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apotheosis-fabric-jar
+          path: |
+            fabric/build/libs/*.jar
+            fabric/dist/*.jar
+          if-no-files-found: error
+
+      # Artifact downloads are not reachable from every environment, so the
+      # built jar is also committed to the branch. `paths-ignore` above stops
+      # this commit from triggering another build.
+      - name: Publish jar into the repository
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p dist
+          cp build/libs/apotheosis-fabric-1.20.1.jar dist/apotheosis-fabric-1.20.1.jar
+          git add -f dist/apotheosis-fabric-1.20.1.jar
+          if git diff --cached --quiet; then
+            echo "jar unchanged"
+          else
+            git commit -m "chore: publish built jar [skip ci]"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
